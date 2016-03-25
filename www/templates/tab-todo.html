@@ -1,0 +1,19 @@
+<ion-view view-title="Todo">
+  <ion-content>
+    <ion-list>
+      <input type="text" ng-model="search.text" />
+      <ion-checkbox class="item-remove-animate item-icon-right" ng-repeat="todo in todos | filter:search"
+                      ng-if="(!pushNotification.checked && ( !todo.checked || todo.checked)) || (pushNotification.checked && !todo.checked)"
+                      ng-model="todo.checked"
+                      ng-checked="todo.checked">
+          {{ todo.text }}
+      </ion-checkbox>
+    </ion-list>
+    <ion-checkbox
+                    ng-model="pushNotification.checked"
+                    ng-checked="pushNotification.checked"
+                    ng-change="pushNotificationChange()">
+        {{ label }}
+    </ion-checkbox>
+  </ion-content>
+</ion-view>
