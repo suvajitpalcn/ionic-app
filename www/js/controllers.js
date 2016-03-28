@@ -41,6 +41,20 @@ angular.module('starter.controllers', [])
 
 .controller('TodoCtrl', function($scope, Todos) {
   $scope.todos = Todos.all();
+  // $scope.inputs = [
+  //     { value: null }
+  // ];
+
+  $scope.addInput = function (task) {
+    var obj = {};
+    obj.text = task;
+    obj.checked = true;
+    $scope.todos.unshift(obj);
+  }
+
+  $scope.removeInput = function (index) {
+      $scope.todos.splice(index, 1);
+  }
   $scope.label = Todos.getCheckText();
   $scope.pushNotification = { checked: false };
   $scope.pushNotificationChange = function() {

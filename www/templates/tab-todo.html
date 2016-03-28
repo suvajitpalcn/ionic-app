@@ -1,13 +1,19 @@
 <ion-view view-title="Todo">
   <ion-content>
     <ion-list>
-      <input type="text" ng-model="search.text" />
-      <ion-checkbox class="item-remove-animate item-icon-right" ng-repeat="todo in todos | filter:search"
+      <div class="row">
+        <input type="text" placeholder="Search" ng-model="search.text" />
+      </div>
+      <div class="row item-remove-animate item-icon-right" ng-repeat="todo in todos | filter:search"
                       ng-if="(!pushNotification.checked && ( !todo.checked || todo.checked)) || (pushNotification.checked && !todo.checked)"
+                      >
+        <ion-checkbox class="todo-list-elem col col-90"
                       ng-model="todo.checked"
                       ng-checked="todo.checked">
-          {{ todo.text }}
-      </ion-checkbox>
+            {{ todo.text }}
+        </ion-checkbox>
+        <button class="col button button-assertive" ng-click="removeInput($index)">Delete</button>
+      </div>
     </ion-list>
     <ion-checkbox
                     ng-model="pushNotification.checked"
@@ -15,5 +21,15 @@
                     ng-change="pushNotificationChange()">
         {{ label }}
     </ion-checkbox>
+    <div class="row">
+    <div class="col col-25"></div>
+    <div class="col col-25">
+      <input type="text" placeholder="Enter Value" ng-model="addValue" />
+    </div>
+    <div class="col col-25">
+      <button class="button button-assertive" ng-click="addInput(addValue);addValue='';">Add</button>
+    </div>
+    <div class="col col-25"></div>
+    </div>
   </ion-content>
 </ion-view>

@@ -128,9 +128,6 @@ angular.module('starter.services', [])
     all: function() {
       return todos;
     },
-    remove: function(todo) {
-      todos.splice(todos.indexOf(todo), 1);
-    },
     getCheckText: function() {
       return 'Hide Completed?';
     }
